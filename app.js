@@ -1,3 +1,14 @@
+let userNum = document.getElementById("getNumber");
+userNum.addEventListener("keydown", function (e) {
+    if (e.keyCode == 13) {
+        run(e);
+    }
+});
+
+userNum.focus();
+
+let counter = 0;
+
 function run() {
     document.getElementById("paragraph").innerHTML = "Hello World!";
     document.getElementById("paragraph").style.backgroundColor = "green";
@@ -36,10 +47,38 @@ function userNumber() {
 function compareNumber() {
     let a = userNumber();
     let b = randomNum();
+    let z = document.getElementById("compare");
+    let c = document.getElementById("counter");
 
     if(a!=b) {
-        document.getElementById("compare").innerHTML = "Numbers are not the same. Computer got " + b + ", and user got " + a;
+        z.innerHTML = "Numbers are not the same. Computer got " + b + ", and user got " + a;
+        z.style.color = "white";
+        z.style.backgroundColor = "red";
+        z.style.padding = "20px";
+        z.style.textAlign = "center";
+        counter++;
+        c.innerHTML = "You have tried " + counter + " times.";
+        c.style.color = "white";
+        c.style.backgroundColor = "red";
+        c.style.padding = "20px";
+        c.style.textAlign = "center";
+
     } else if (a==b) {
-        document.getElementById("compare").innerHTML = "Numbers are the same. Computer got " + b + ", and user got " + a;        
+        z.innerHTML = "Numbers are the same. Computer got " + b + ", and user got " + a;        
+        z.style.color = "white";
+        z.style.backgroundColor = "green";
+        z.style.padding = "20px";
+        z.style.textAlign = "center";
+        c.innerHTML = "You have tried " + counter + " times.";
+        c.style.color = "white";
+        c.style.backgroundColor = "red";
+        c.style.padding = "20px";
+        c.style.textAlign = "center";
     }
+
+    resetInput();
 } 
+
+function resetInput() {
+    document.getElementById("getNumber").value = "";
+}
